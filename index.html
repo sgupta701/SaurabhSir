@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saurabh Gupta</title>
+<style>
+
+    @font-face {
+        font-family: 'eutemia';
+        src: url('Eutemia.ttf'); 
+    }
+
+    @font-face {
+        font-family: 'beyondWonderland';
+        src: url('Beyond Wonderland.ttf'); 
+    }
+    
+    @font-face {
+        font-family: 'federalescortchromeital';
+        src: url('federalescortchromeital.ttf'); 
+    } 
+    
+
+    @font-face {
+        font-family: 'loversQuarrel';
+        src: url('LoversQuarrel-Regular.ttf'); 
+    }
+
+    @font-face {
+        font-family: 'Carnevalee Freakshow';
+        src: url('Carnevalee Freakshow.ttf'); 
+    }
+
+    @font-face {
+        font-family: 'AlbertText-Bold';
+        src: url('AlbertText-Bold.ttf'); 
+    }
+
+    @font-face {
+        font-family: 'alphabetized cassette tapes';
+        src: url('alphabetized cassette tapes.ttf'); 
+    }
+
+    body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100%;
+    background-color: #2e2e2e;
+    color: #fff;
+    padding-bottom: 80px;
+  }
+
+  #text1 {
+        font-family: 'AlbertText-Bold';
+        font-size: 45px;
+        margin-bottom: -15px;
+        margin-left: 10px;
+        text-align: left;
+    }
+
+    #text2 {
+        font-family: 'AlbertText-Bold';
+        font-size: 55px;
+        margin-bottom: -15px;
+        text-align: center;
+        color: rgb(208, 199, 199);
+    }  
+
+    #text3 {
+        font-family: 'alphabetized cassette tapes';
+        font-size: 45px;
+        margin-bottom: -30px;
+        margin-left: 15px;
+        text-align: left;
+        color: rgb(208, 199, 199);
+    }  
+
+  .container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 0px;
+  }
+
+  /* Styles for containers */
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -10px;
+  }
+  .col {
+    flex: 1;
+    padding: 0 10px;
+    box-sizing: border-box;
+  }
+  /* Styles for image slider */
+  .image-slider {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    margin-top: 30px;
+    transition: transform 0.5s ease;
+  }
+
+  .image-slide {
+    width: 100%;
+    height: 100%;
+    flex-shrink: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .image-slide img {
+    width: 100%;
+    max-height: 700px;
+    margin-bottom: 0px;
+    opacity: 0.2;
+  }
+
+  .overlay {
+    position: fixed;
+    top: 45px;
+    left: 45px;
+    z-index: 999;
+    border-radius: 50%;
+    overflow: hidden;
+    width: 150px;
+    height: 150px;
+  }
+
+  .prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+  }
+
+  .prev {
+    left: 0;
+  }
+
+  .next {
+    right: 0;
+  }
+
+  .fixed-text {
+  position: absolute;
+  bottom: 10%; 
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0);
+  padding: 10px;
+  border-radius: 5px;
+  z-index: 1;
+}
+
+  .text-container {
+    width: 100%;
+    height: 15%; 
+    background-color: #2e2e2e;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    color: #fff;
+  }
+
+  .text-container2 {
+    width: 100%;
+    height: 10%; 
+    background-color: #2e2e2e;
+    text-align: center;
+    padding-top: 0px;
+    padding-bottom : 0px;
+    box-sizing: border-box;
+    color: #fff;
+  }
+  /* Styles for download links */
+  .downloads {
+    padding-top: 20px;
+  }
+
+  .mypic {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 250px;
+    height: auto;
+    border-radius: 50%;
+    border: 5px solid #fff;
+    z-index: 1;
+  }
+
+  footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  @media screen and (max-width: 768px) {
+    #text1 {
+        font-size: 25px;
+        margin-bottom: 3px;
+    }
+
+    #text2 {
+        font-size: 25px;
+    }
+
+    #text3 {
+        font-size: 18px;
+        margin-bottom: 3px;
+    }
+
+    .mypic {
+        width: 120px;
+    }
+
+    .fixed-text {
+        display: none;
+    }
+
+    .prev, .next {
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #text1 {
+        font-size: 20px;
+    }
+
+    #text2 {
+        font-size: 20px;
+    }
+
+    #text3 {
+        font-size: 16px;
+    }
+
+    .mypic {
+        width: 100px;
+    }
+
+    .fixed-text {
+        display: none;
+    }
+
+    .prev, .next {
+        width: 25px;
+        height: 25px;
+        line-height: 25px;
+        font-size: 16px;
+        top: 90%;
+    }
+}
+
+
+</style>
+</head>
+<body>
+
+<!-- First Row -->
+<div class="row">
+  <div class="col">
+    <h2>Saurabh Gupta (IIT-BHU, Varanasi) </h2>
+    <p>BTech , MTech, PhD</p>
+    <p>Research Scholar</p>
+    <p>Published Research Papers on International Platforms</p>
+    <img src="mypic.png" alt="Saurabh Gupta's Image" class= "mypic" style="max-width: 100%; height: auto;">
+  </div>
+</div>
+
+<!-- Second Row--> 
+<div class="row">
+    <div class="image-slider" id="image-slider">
+        <div class="image-slide">
+          <img src="test1.jpg" alt="Image 1">
+        </div>
+        <div class="image-slide">
+          <img src="test2.jpg" alt="Image 2">
+        </div>
+        <div class="image-slide">
+          <img src="test3.jpg" alt="Image 3">
+        </div>
+      </div>
+      <div class="fixed-text">
+        <h1 id="text2"> <i>Explore your potential</i></h1>
+        <h1 id="text2"> <i>With an IITian....</i></h1>
+      </div>
+      <div class="prev" onclick="prevSlide()">&#10094;</div>
+      <div class="next" onclick="nextSlide()">&#10095;</div>
+    </div>
+</div>
+
+<!-- Third Row -->
+<div class="container">
+    <!-- <h1>Physics - Class XIIth </h1>
+    <ul class="assignment-list">
+        <li class="assignment-item">
+            <a class="assignment-link" href="pyq1.pdf" target="_blank">Assignment 1</a>
+        </li>
+        <li class="assignment-item">
+            <a class="assignment-link" href="assignment2.docx" target="_blank">Assignment 2</a>
+        </li>
+        <li class="assignment-item">
+            <a class="assignment-link" href="assignment3.txt" target="_blank">Assignment 3</a>
+        </li>
+    </ul> -->
+    <h1 id="text1">Physics - Class XIIth</h1>
+    <h1 id="text1">Physics - Class XIth</h1>
+    <ul class="assignment-list">
+        <li class="assignment-item">
+            <a class="assignment-link" href="Units_and_measurement.pdf" target="_blank">Assignment 1</a>
+        </li>
+    </ul>
+    
+    <h1 id="text1">Physics - Class Xh</h1>
+    <!--
+        <li class="assignment-item">
+            <a class="assignment-link" href="assignment2.docx" target="_blank">Assignment 2</a>
+        </li>
+        <li class="assignment-item">
+            <a class="assignment-link" href="assignment3.txt" target="_blank">Assignment 3</a>
+        </li>
+    </ul>
+    <h1>Physics - Class Xth </h1>
+    <ul class="assignment-list">
+        <li class="assignment-item">
+            <a class="assignment-link" href="pyq1.pdf" target="_blank">Assignment 1</a>
+        </li>
+        <li class="assignment-item">
+            <a class="assignment-link" href="assignment2.docx" target="_blank">Assignment 2</a>
+        </li>
+        <li class="assignment-item">
+            <a class="assignment-link" href="assignment3.txt" target="_blank">Assignment 3</a>
+        </li>
+    </ul> -->
+</div>
+
+<footer>
+    Total Site Visits: <span id="visitCount">0</span>
+  </footer>
+
+<script>
+  // JavaScript for image slider
+  let index = 0;
+  const slides = document.querySelectorAll('.image-slide');
+  const totalSlides = slides.length;
+
+  function showSlide(n) {
+    index = n % totalSlides;
+    if (index < 0) {
+      index = totalSlides - 1;
+    }
+    document.getElementById('image-slider').style.transform = `translateX(-${index * 100}%)`;
+  }
+
+  function nextSlide() {
+    showSlide(index + 1);
+  }
+
+  function prevSlide() {
+    showSlide(index - 1);
+  }
+
+  setInterval(nextSlide, 3000);
+
+  let visitCount = localStorage.getItem('visitCount') || 0;
+  visitCount++;
+  document.getElementById('visitCount').textContent = visitCount;
+  localStorage.setItem('visitCount', visitCount);
+
+</script>
+
+</body>
+</html>
